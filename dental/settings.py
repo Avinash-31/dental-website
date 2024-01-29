@@ -1,6 +1,7 @@
 from pathlib import Path
 import environ
 import os
+import asyncio
 
 env = environ.Env()
 environ.Env.read_env()
@@ -122,6 +123,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'website/static'),
 ]
+
+# Email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'avinash.80031@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS =  True
+# EMAIL_USE_SSL = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
