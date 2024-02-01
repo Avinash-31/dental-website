@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.mail import send_mail
+from datetime import datetime
+# from .forms import Profileform
+from . import models
 
 def home(request):
     return render(request, 'pages/index.html', {})
@@ -17,24 +20,6 @@ def service(request):
 def pricing(request):
     return render(request, 'pages/pricing.html', {})
 
-
-def contact(request):
-    if request.method == "POST":
-        message_name = request.POST['message-name']
-        message_email = request.POST['message-email']
-        message = request.POST['message']
-        
-        #send an email
-        # send_mail(
-        #     message_name, #subject
-        #     message, #message
-        #     message_email, #from email
-        #     ['avinash.80031@gmail.com'], #to email
-        # )
-        return render(request, 'pages/contact.html', {'message_name':message_name})
-    return render(request, 'pages/contact.html', {})
-
-
 def blog(request):
     return render(request, 'pages/blog.html', {})
 
@@ -42,23 +27,54 @@ def blog(request):
 def blog_details(request):
     return render(request, 'pages/blog-details.html', {})
 
-def appointment(request):
+def contact(request):
     if request.method == "POST":
-        name = request.POST['name']
-        phone = request.POST['phone']
-        email = request.POST['email']
-        address = request.POST['address']
-        dateOfAppointment = request.POST['dateOfAppointment']
-        time = request.POST['time']
-        formMessage = request.POST['formMessage']
-            
+        Name = request.POST['message-name']
+        Email = request.POST['message-email']
+        Msg = request.POST['message']
+        
+        # Save the message in the database
+        Contact = models.contact(
+            name=Name,
+            email=Email,
+            msg=Msg,
+        )
+        Contact.save()
+
+        return render(request, 'pages/contact.html', {'message_name': Name})
+
+    return render(request, 'pages/contact.html', {})
+
+def appointment(request):
+
+    if request.method == 'POST':
+        Name = request.POST['name']
+        Phone = request.POST['phone']
+        Email = request.POST['email']
+        Address = request.POST['address']
+        DateOfAppointment = request.POST['dateOfAppointment']
+        Slot = request.POST['slot']
+        Msg = request.POST['formMessage']
+        
+        appointment = models.appointments(
+            name=Name,
+            mobile=Phone,
+            email=Email,
+            address=Address,
+            msg=Msg,
+            slot=Slot,
+            dateOfAppointment=DateOfAppointment,
+            timestamp=datetime.now(),
+        )
+        appointment.save()
+        print("Appointment saved")
         return render(request,'pages/appointment.html',{
-            'name':name,
-            'phone':phone,
-            'email':email,
-            'address':address,
-            'dateOfAppointment':dateOfAppointment,
-            'time':time,
-            'formMessage':formMessage,
+            'name':Name,
+            'phone':Phone,
+            'email':Email,
+            'address':Address,
+            'dateOfAppointment':DateOfAppointment,
+            'time':Slot,
+            'formMessage':Msg,
         })
-    return redirect('home')
+    return redirect('home')  

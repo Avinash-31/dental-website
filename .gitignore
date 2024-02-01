@@ -1,9 +1,9 @@
 /env/
 /development/
-
+static
 /static/
 db.sqlite3
-
+.env
 /dental/__pycache__/
 /dental/.env
 /website/__pycache__/

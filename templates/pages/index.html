@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% load static %}
 
 {% block content %}
@@ -338,32 +339,38 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group mb-30">
+                    {% comment %} {% render_field form.name class="form-control" placeholder="Your name"%} {% endcomment %}
                     <input type="text" name="name" class="form-control" placeholder="Your Name" required />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
+                    {% comment %} {% render_field form.mobile class="form-control" placeholder="Your  Mobile Number"%} {% endcomment %}
                     <input type="text" name="phone" class="form-control" placeholder="Your Phone" required />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
+                    {% comment %} {% render_field form.email class="form-control" placeholder="Your Email address"%} {% endcomment %}
                     <input type="email" name="email" class="form-control" placeholder="Your Email" required />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
+                    {% comment %} {% render_field form.address class="form-control" placeholder="Your Address"%} {% endcomment %}
                     <input type="text" name="address" class="form-control" placeholder="Your Address" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
+                    {% comment %} {% render_field form.dateOfAppointment class="form-control" placeholder="Select date of appointment"%} {% endcomment %}
                       <input type="date" class="form-control" name="dateOfAppointment" placeholder="Select data of appoinment" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <select name="time" class="form-control">
+                    {% comment %} {% render_field form.slot class="form-control" placeholder="Choose your slot"%} {% endcomment %}
+                    <select name="slot" class="form-control">
                       <option value="Choose Your Time">Choose Your Scheldule</option>
                       <option value="9 AM to 10 AM">9 AM to 10 AM</option>
                       <option value="11 AM to 12 PM">11 AM to 12 PM</option>
@@ -374,6 +381,7 @@
                 </div>
                 <div class="col-12">
                   <div class="form-group mb-30">
+                    {% comment %} {% render_field form.msg class="form-control" placeholder="Your Message"%} {% endcomment %}
                     <textarea name="formMessage" class="form-control" placeholder="Your Message"></textarea>
                   </div>
                 </div>
