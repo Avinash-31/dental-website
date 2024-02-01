@@ -8,7 +8,7 @@
     <!-- Welcome Slides -->
     <div class="welcome-slides owl-carousel">
       <!-- Single Welcome Slide -->
-      <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({% static 'website/img/bg_img/1.jpg' %});">
+      <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({% static 'website/img/bg_img/demo.jpg' %});">
         <div class="container h-100">
           <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Single Welcome Slide -->
-      <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({% static 'website/img/bg_img/2.jpg' %});">
+      <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({% static 'website/img/bg_img/demo.jpg' %});">
         <div class="container h-100">
           <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -55,7 +55,7 @@
         <!-- About Us Thumbnail -->
         <div class="col-12 col-md-6">
           <div class="about-us-thumbnail mb-50">
-            <img src="{% static 'website/img/bg_img/15.jpg' %}" alt="" />
+            <img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" />
           </div>
         </div>
         <!-- About Content -->
@@ -150,7 +150,7 @@
   <!-- Cool Facts Area End -->
 
   <!-- Dento Service Area Start -->
-  <section class="dento-service-area section-padding-100-0 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url({% static 'website/img/bg_img/13.jpg' %});">
+  <section class="dento-service-area section-padding-100-0 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url({% static 'website/img/bg_img/demo.jpg' %});">
     <div class="container">
       <div class="row align-items-center">
         <!-- Service Content -->
@@ -252,56 +252,13 @@
                 </tr>
               </thead>
               <tbody>
+                {% for pricing in pricings %}
                 <tr>
-                  <th scope="row">Teeth Whitening Service at home</th>
-                  <td>1 times</td>
-                  <td>$115.00</td>
+                  <th scope="row">{{pricing.service_name}}</th>
+                  <td>{{pricing.stage}}</td>
+                  <td>{{pricing.price}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">Teeth Whitening Service at Dental Clinic</th>
-                  <td>1 times</td>
-                  <td>$100.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Ceramic crowns and fillings Dental porcelain</th>
-                  <td>1 times</td>
-                  <td>$99.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Remove crowns, bridges Service</th>
-                  <td>1 tooth</td>
-                  <td>$50.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Covering the recession of the gums</th>
-                  <td>1 times</td>
-                  <td>$400.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Consultation, impressions and preparation of models</th>
-                  <td>1 times</td>
-                  <td>$35.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Removal of an old inlay, old crown</th>
-                  <td>1 times</td>
-                  <td>$99.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Overlay teeth whitening ( 2 arches)</th>
-                  <td>1 times</td>
-                  <td>$170.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Standard porcelain and zirconium crown on implant</th>
-                  <td>1 tooth</td>
-                  <td>$499.00</td>
-                </tr>
-                <tr>
-                  <th scope="row">Implantation of an implant (price depends on system used)</th>
-                  <td>1 tooth</td>
-                  <td>$600.00</td>
-                </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -315,10 +272,10 @@
       </div>
     </div>
   </section>
-  <!-- Dento Pricing Table Area End -->
+  <!-- Pricing Table Area End -->
 
   <!-- Book An Oppointment Area Start -->
-  <section class="book-an-oppointment-area section-padding-100 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url({% static 'website/img/bg_img/12.jpg' %});">
+  <section class="book-an-oppointment-area section-padding-100 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url({% static 'website/img/bg_img/demo.jpg' %});">
     <div class="container">
       <div class="row">
         <!-- Section Heading -->
@@ -397,7 +354,7 @@
   </section>
   <!-- Book An Oppointment Area End -->
 
-  <!-- ***** Dento Dentist Area Start ***** -->
+  <!-- ***** Dentist Area Start ***** -->
   <section class="dentist-area section-padding-100-0">
     <div class="container">
       <div class="row">
@@ -412,9 +369,35 @@
 
       <div class="row">
         <!-- Single Dentist Area -->
+        {% for dentist in dentists %}
         <div class="col-12 col-sm-6 col-md-4">
           <div class="single-dentist-area mb-100">
-            <img src="{% static 'website/img/bg_img/9.png' %}" alt="" />
+            <div style="height: 20rem; width: auto;">
+
+              <img src="{{dentist.image.url}}" style="position: relative; height: max-content;" alt="Image" />
+            </div>
+            <!-- Dentist Content -->
+            <div class="dentist-content">
+              <!-- Social Info -->
+              <div class="dentist-social-info">
+                <a href="{{dentist.facebook_link}}"><i class="fa fa-facebook"></i></a>
+                <a href="{{dentist.instagram_link}}"><i class="fa fa-instagram"></i></a>
+                <a href="{{dentist.email_link}}"><i class="fa fa-envelope"></i></a>
+              </div>
+              <!-- Dentist Info -->
+              <div class="dentist-info bg-gradient-overlay">
+                <h5>{{dentist.dentist_name}}</h5>
+                <p>{{dentist.designation}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Single Dentist Area -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="single-dentist-area mb-100">
+            <img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" />
             <!-- Dentist Content -->
             <div class="dentist-content">
               <!-- Social Info -->
@@ -435,28 +418,7 @@
         <!-- Single Dentist Area -->
         <div class="col-12 col-sm-6 col-md-4">
           <div class="single-dentist-area mb-100">
-            <img src="{% static 'website/img/bg_img/10.png' %}" alt="" />
-            <!-- Dentist Content -->
-            <div class="dentist-content">
-              <!-- Social Info -->
-              <div class="dentist-social-info">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-google-plus"></i></a>
-              </div>
-              <!-- Dentist Info -->
-              <div class="dentist-info bg-gradient-overlay">
-                <h5>Michael Barley</h5>
-                <p>Implant Expert</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Single Dentist Area -->
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="single-dentist-area mb-100">
-            <img src="{% static 'website/img/bg_img/11.png' %}" alt="" />
+            <img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" />
             <!-- Dentist Content -->
             <div class="dentist-content">
               <!-- Social Info -->
@@ -479,7 +441,7 @@
   <!-- ***** Dento Dentist Area End ***** -->
 
   <!-- ***** Testimonials Area Start ***** -->
-  <section class="testimonials-area section-padding-100 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url({% static 'website/img/bg_img/7.jpg' %});">
+  <section class="testimonials-area section-padding-100 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url({% static 'website/img/bg_img/demo.jpg' %});">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -489,7 +451,7 @@
             <div class="single-testimonial-slide d-flex align-items-center">
               <!-- Thumbnail -->
               <div class="testimonial-thumb">
-                <img src="{% static 'website/img/bg_img/8.jpg' %}" alt="" />
+                <img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" />
               </div>
               <!-- Content -->
               <div class="testimonial-content">
@@ -503,7 +465,7 @@
             <div class="single-testimonial-slide d-flex align-items-center">
               <!-- Thumbnail -->
               <div class="testimonial-thumb">
-                <img src="{% static 'website/img/bg_img/8.jpg' %}" alt="" />
+                <img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" />
               </div>
               <!-- Content -->
               <div class="testimonial-content">
@@ -517,7 +479,7 @@
             <div class="single-testimonial-slide d-flex align-items-center">
               <!-- Thumbnail -->
               <div class="testimonial-thumb">
-                <img src="{% static 'website/img/bg_img/8.jpg' %}" alt="" />
+                <img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" />
               </div>
               <!-- Content -->
               <div class="testimonial-content">
@@ -550,7 +512,7 @@
         <!-- Single Blog Item -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="single-blog-item mb-100">
-            <a href="{% url 'blog_details' %}"><img src="{% static 'website/img/bg_img/4.jpg' %}" alt="" /></a>
+            <a href="{% url 'blog_details' %}"><img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" /></a>
             <!-- Blog Content -->
             <div class="blog-content">
               <a href="{% url 'blog_details' %}" class="post-title">How your mouth bacteria can harm your lungs</a>
@@ -566,7 +528,7 @@
         <!-- Single Blog Item -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="single-blog-item mb-100">
-            <a href="{% url 'blog_details' %}"><img src="{% static 'website/img/bg_img/5.jpg' %}" alt="" /></a>
+            <a href="{% url 'blog_details' %}"><img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" /></a>
             <!-- Blog Content -->
             <div class="blog-content">
               <a href="{% url 'blog_details' %}" class="post-title">What is the best kind of toothpaste to use?</a>
@@ -582,7 +544,7 @@
         <!-- Single Blog Item -->
         <div class="col-12 col-md-6 col-lg-4">
           <div class="single-blog-item mb-100">
-            <a href="{% url 'blog_details' %}"><img src="{% static 'website/img/bg_img/6.jpg' %}" alt="" /></a>
+            <a href="{% url 'blog_details' %}"><img src="{% static 'website/img/bg_img/demo.jpg' %}" alt="" /></a>
             <!-- Blog Content -->
             <div class="blog-content">
               <a href="{% url 'blog_details' %}" class="post-title">Why you should avoid sipping your drinks</a>

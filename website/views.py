@@ -6,7 +6,14 @@ from datetime import datetime
 from . import models
 
 def home(request):
-    return render(request, 'pages/index.html', {})
+    Pricings = models.pricing.objects.all()
+    Dentists = models.dentist.objects.all()
+    Reviews = models.review.objects.all()
+    return render(request, 'pages/index.html', {
+        'pricings':Pricings,
+        'dentists':Dentists,
+        'reviews':Reviews,
+    })
 
 
 def about(request):
@@ -56,7 +63,7 @@ def appointment(request):
         Slot = request.POST['slot']
         Msg = request.POST['formMessage']
         
-        appointment = models.appointments(
+        appointment = models.appointment(
             name=Name,
             mobile=Phone,
             email=Email,
