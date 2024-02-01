@@ -3,7 +3,9 @@
 static
 /static/
 db.sqlite3
+/.env
 .env
+myenv
 /dental/__pycache__/
 /dental/.env
 /website/__pycache__/
