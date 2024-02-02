@@ -1,6 +1,5 @@
 /env/
 /development/
-static
 /static/
 db.sqlite3
 /.env
