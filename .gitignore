@@ -5,6 +5,8 @@ static
 db.sqlite3
 /.env
 .env
+/env
+env
 myenv
 /dental/__pycache__/
 /dental/.env
